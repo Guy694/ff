@@ -36,8 +36,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link" href="{{ route('home.add_ind') }}">{{ __('+เพิ่มตัวชี้วัด') }}</a></li>
-                    <li><a class="nav-link" href="{{ route('home.add_exp_ind') }}">{{ __('+ตัวชี้วัffด') }}</a></li>
+                    <li><a class="nav-link" href="{{ route('page.create') }}">{{ __('+เพิ่มตัวชี้วัด') }}</a></li>
+                    {{-- <li><a class="nav-link" href="{{ route('home.add_exp_ind') }}">{{ __('+ตัวชี้วัffด') }}</a></li> --}}
                     </ul>
 
                     <!-- Right Side Of Navbar -->

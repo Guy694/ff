@@ -13,21 +13,25 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                      <div class="row">
+                    <form action="{{ route('page.store')}}" method="post">
+                        @csrf
+                           <div class="row">
                         <div class="col-3">
                             <label for="" class="form-label">ผลลัพธ์</label>
-                            <input type="text" class="form-control" id="num_result" name="num_result" placeholder="7.1">
+                            <input type="text" class="form-control"  name="ind_num_name" placeholder="7.1">
                         </div>
                         <div class="col">
                             <label for="" class="form-label">ด้าน</label>
-                            <input type="text" class="form-control" id="name_result" name="name_result" placeholder="ด้านการจัดการศึกษา">
+                            <input type="text" class="form-control"  name="ind_name" placeholder="ด้านการจัดการศึกษา">
                         </div>
                       </div>
                       <br>
                       <div class="row">
                       <div class="col-12">
-                        <button type="submit" class="btn btn-primary">บันทึก</button>
+                        <button type="submit"  class="btn btn-primary">บันทึก</button>
                       </div></div>
+                    </form>
+
 
 
 

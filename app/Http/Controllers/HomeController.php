@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\indicator;
 use Illuminate\Http\Request;
 use App\Models\tsu_agency;
+use App\Models\exp_indicator;
 
 class HomeController extends Controller
 {
@@ -24,9 +26,84 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = tsu_agency::all();
-        return view('home',['tsu_agencies'=>$data]);
+        $data = indicator::all();
+
+
+        $data = indicator::join('exp_indicators', 'indicators.ind_id', '=', 'exp_indicators.ind_id')
+        ->get(['*']);
+
+
+
+        return view('home',compact('data'));
+
+
+        // $data = tsu_agency::all();
+        // return view('home',['tsu_agencies'=>$data]);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

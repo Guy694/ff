@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\add_ind;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,11 +22,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('admin/home',[HomeController::class,'adminHome'])->name('admin.home')->middleware('is_admin');
+// Route::get('admin/home',[HomeController::class,'adminHome'])->name('admin.home')->middleware('is_admin');
 
 
+// Route::get('/add_ind', [add_ind::class, 'add_ind_page'])->name('home.add_ind');
+// Route::get('/add_exp_ind', [add_ind::class, 'add_exp_ind_page'])->name('home.add_exp_ind');
 
-Route::get('/add_ind', [add_ind::class, 'add_ind_page'])->name('home.add_ind');
-Route::get('/add_exp_ind', [add_ind::class, 'add_exp_ind_page'])->name('home.add_exp_ind');
+Route::resource('page', PostController::class);
+
