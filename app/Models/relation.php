@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
-use App\Http\Controllers\HomeController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
-
-class indicator extends Model
+use DB;
+class relation extends Model
 {
     use HasFactory;
-    protected $fillable = ['ind_num_name','ind_name',];
-
+    public function getdata($sql){
+        return $data=DB::select($sql);
+    }
 }

@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\indicator;
+use App\Models\exp_indicator;
 use Illuminate\Http\Request;
-use App\Models\tsu_agency;
+use App\Models\indicator;
 
-use function GuzzleHttp\Promise\all;
-
-class PostController extends Controller
+class ExpController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-
+        //
     }
 
     /**
@@ -27,7 +25,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('page.add_ind');
+
+        $GG = "2";
+        return view('page.add_exp_ind',compact('GG'));
     }
 
     /**
@@ -39,12 +39,18 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'ind_num_name' => 'required',
-            'ind_name' => 'required'
+            'exind_num_name' => 'required',
+            'exind_name' => 'required',
+            'value_type' => 'required',
+            'num2562',
+            'num2563',
+            'target2564',
+            'ind_id' => 'required'
+
             ]
         );
 
-        indicator::create($request ->all());
+        exp_indicator::create($request ->all());
 
         return  redirect()->route('home')->with('success','Post created Successfully');
     }
@@ -52,10 +58,10 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\exp_indicator  $exp_indicator
      * @return \Illuminate\Http\Response
      */
-    public function show(indicator $post)
+    public function show(exp_indicator $exp_indicator)
     {
         //
     }
@@ -63,31 +69,36 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\exp_indicator  $exp_indicator
      * @return \Illuminate\Http\Response
      */
-    public function edit(indicator $post)
+    public function edit(exp_indicator $exp_indicator)
     {
-        return view('page.edit_ind',compact('post'));
+        return view('page.edit_exind',compact('exp_indicator'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\exp_indicator  $exp_indicator
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, indicator $post)
+    public function update(Request $request, exp_indicator $exp_indicator)
     {
-        $request->validate(
-            [
-                'ind_num_name' => 'required',
-                'ind_name' => 'required'
-            ]
-            );
+        $request->validate([
+            'exind_num_name' => 'required',
+            'exind_name' => 'required',
+            'exind_name' => 'required',
+            'value_type' => 'required',
+            'num2562' ,
+            'num2563' ,
+            'target2564',
+            'ind_id' => 'required'
 
-            $post->update($request->all());
+            ]
+        );
+        $exp_indicator->update($request->all());
 
         return redirect()->route('home')->with('success','Post update Successfully.');
     }
@@ -95,15 +106,12 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\exp_indicator  $exp_indicator
      * @return \Illuminate\Http\Response
      */
-    public function destroy(indicator $post)
+    public function destroy(exp_indicator $exp_indicator)
     {
-        $post->delete();
+        $exp_indicator->delete();
         return redirect()->route('home')->with('success','Post delete Successfully.');
     }
-
-
-
 }

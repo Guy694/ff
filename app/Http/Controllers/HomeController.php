@@ -6,7 +6,7 @@ use App\Models\indicator;
 use Illuminate\Http\Request;
 use App\Models\tsu_agency;
 use App\Models\exp_indicator;
-
+use App\Models\relation;
 class HomeController extends Controller
 {
     /**
@@ -26,83 +26,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = indicator::all();
 
+        $relation = new relation();
+        $relat = $relation->getdata('select * from indicators;');
+        $subrelat = $relation->getdata('select * from exp_indicators;');
 
-        $data = indicator::join('exp_indicators', 'indicators.ind_id', '=', 'exp_indicators.ind_id')
-        ->get(['*']);
-
-
-
-        return view('home',compact('data'));
+        // $categories = indicator::whereNull('ind_id')->with('childs')->get();
+        // $data = indicator::all();
+        // $dataexp = exp_indicator::all();
+        // $data = indicator::join('exp_indicators', 'indicators.ind_id', '=', 'exp_indicators.parent_id')->get(['*']);
+        return view('home',compact('relat','subrelat'));
 
 
         // $data = tsu_agency::all();
-        // return view('home',['tsu_agencies'=>$data]);
+
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
