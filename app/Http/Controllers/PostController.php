@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\indicator;
 use Illuminate\Http\Request;
 use App\Models\tsu_agency;
+use App\Models\relation;
 
 use function GuzzleHttp\Promise\all;
 
@@ -46,7 +47,7 @@ class PostController extends Controller
 
         indicator::create($request ->all());
 
-        return  redirect()->route('home')->with('success','Post created Successfully');
+        return  redirect()->route('home')->with('success','บันทึกข้อมูลสำเร็จ');
     }
 
     /**
@@ -66,9 +67,19 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(indicator $post)
+    public function edit($post)
     {
-        return view('page.edit_ind',compact('post'));
+
+        // $data = new relation();
+        // $datapost = $data->getdata('select * from indicators where ind_id ="'.$post.'";');
+         $datapost = indicator::find($post);
+
+
+        // return view('page.edit_ind',compact('post'));
+
+
+        return view('page.edit_ind',compact('datapost'));
+
     }
 
     /**
@@ -78,7 +89,8 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, indicator $post)
+    public function update(Request $request,$post)
+
     {
         $request->validate(
             [
@@ -86,10 +98,10 @@ class PostController extends Controller
                 'ind_name' => 'required'
             ]
             );
+            $datapost = indicator::find($post);
+            $datapost->update($request->all());
 
-            $post->update($request->all());
-
-        return redirect()->route('home')->with('success','Post update Successfully.');
+        return redirect()->route('home')->with('success','แก้ไขข้อมูลสำเร็จ');
     }
 
     /**
@@ -98,10 +110,11 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(indicator $post)
+    public function destroy($post)
     {
-        $post->delete();
-        return redirect()->route('home')->with('success','Post delete Successfully.');
+        $item = indicator::where('ind_id',$post);
+        $item->delete();
+        return redirect()->route('home')->with('success','ลบข้อมูลสำเร็จ');
     }
 
 

@@ -27,10 +27,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // Route::get('admin/home',[HomeController::class,'adminHome'])->name('admin.home')->middleware('is_admin');
 
+Route::resource('page',PostController::class);
 
-// Route::get('/add_ind', [add_ind::class, 'add_ind_page'])->name('home.add_ind');
-// Route::get('/add_exp_ind', [add_ind::class, 'add_exp_ind_page'])->name('home.add_exp_ind');
 
-Route::resource('page', PostController::class);
 
 Route::resource('exp',ExpController::class);

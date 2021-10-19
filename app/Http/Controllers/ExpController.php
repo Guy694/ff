@@ -26,8 +26,8 @@ class ExpController extends Controller
     public function create()
     {
 
-        $GG = "2";
-        return view('page.add_exp_ind',compact('GG'));
+        $dataexp = indicator::find(3);
+        return view('page.add_exp_ind',compact('dataexp'));
     }
 
     /**
@@ -45,14 +45,14 @@ class ExpController extends Controller
             'num2562',
             'num2563',
             'target2564',
-            'ind_id' => 'required'
+            'parent_id' => 'required'
 
             ]
         );
 
         exp_indicator::create($request ->all());
 
-        return  redirect()->route('home')->with('success','Post created Successfully');
+        return  redirect()->route('home')->with('success','บันทึกข้อมูลสำเร็จ');
     }
 
     /**
@@ -72,9 +72,10 @@ class ExpController extends Controller
      * @param  \App\Models\exp_indicator  $exp_indicator
      * @return \Illuminate\Http\Response
      */
-    public function edit(exp_indicator $exp_indicator)
+    public function edit($exp_indicator)
     {
-        return view('page.edit_exind',compact('exp_indicator'));
+        $datapost = exp_indicator::find($exp_indicator);
+        return view('page.edit_exind',compact('datapost'));
     }
 
     /**
@@ -84,7 +85,7 @@ class ExpController extends Controller
      * @param  \App\Models\exp_indicator  $exp_indicator
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, exp_indicator $exp_indicator)
+    public function update(Request $request,$exp_indicator)
     {
         $request->validate([
             'exind_num_name' => 'required',
@@ -93,14 +94,15 @@ class ExpController extends Controller
             'value_type' => 'required',
             'num2562' ,
             'num2563' ,
-            'target2564',
-            'ind_id' => 'required'
+            'target2564'
+
 
             ]
         );
-        $exp_indicator->update($request->all());
+        $datapost = exp_indicator::find($exp_indicator);
+        $datapost->update($request->all());
 
-        return redirect()->route('home')->with('success','Post update Successfully.');
+        return redirect()->route('home')->with('success','แก้ไขข้อมูลสำเร็จ');
     }
 
     /**
@@ -109,9 +111,10 @@ class ExpController extends Controller
      * @param  \App\Models\exp_indicator  $exp_indicator
      * @return \Illuminate\Http\Response
      */
-    public function destroy(exp_indicator $exp_indicator)
+    public function destroy($exp_indicator)
     {
-        $exp_indicator->delete();
-        return redirect()->route('home')->with('success','Post delete Successfully.');
+        $item = exp_indicator::where('exind_id',$exp_indicator);
+        $item->delete();
+        return redirect()->route('home')->with('success','ลบข้อมูลสำเร็จ');
     }
 }

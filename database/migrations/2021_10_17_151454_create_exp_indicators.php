@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateExpIndicator extends Migration
+class CreateExpIndicators extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class CreateExpIndicator extends Migration
      */
     public function up()
     {
-        Schema::create('exp_indicator', function (Blueprint $table) {
-            $table->id('exind_id');
+        Schema::create('exp_indicators', function (Blueprint $table) {
+            $table->bigIncrements('exind_id');
             $table->string('exind_num_name');
             $table->string('exind_name');
-            $table->bigInteger('ind_id');
+            $table->string('value_type');
+            $table->string('num2562');
+            $table->string('num2563');
+            $table->string('target2564');
+            $table->bigInteger('parent_id');
             $table->timestamps();
         });
     }
@@ -29,6 +33,6 @@ class CreateExpIndicator extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exp_indicator');
+        Schema::dropIfExists('exp_indicators');
     }
 }

@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class indicator extends Model
 {
     use HasFactory;
+    protected  $primaryKey = 'ind_id';
     protected $fillable = ['ind_num_name','ind_name',];
 
 }

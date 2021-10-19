@@ -4,8 +4,22 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md">
+                {{-- เช็คเออเร่อ --}}
+                @if ($errors->any())
+                    <div class=" alert alert-danger">
+                        <strong>อุ๊ฟๆๆ</strong>
+                        มีปัญหาในการบันทึกข้อมูล <br> <br>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                {{-- เช็คเออเร่อ --}}
                 <div class="card">
-                    <div class="card-header">{{ __('ตัวชี้วัด ............................................') }}</div>
+                    <div class="card-header bg-primary text-white">
+                        {{ __('ตัวชี้วัด ............................................') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -53,23 +67,17 @@
                                     <label for="" class="form-label">ค่าเป้าหมาย ปี 2564</label>
                                     <input type="text" class="form-control" name="target2564" value="" placeholder="">
                                 </div>
-                                <input type="number" name="ind_id" value="{{ $GG }}">
+                                <input type="number" name="parent_id" value="{{ $dataexp->ind_id }}">
                             </div>
 
 
                             <div class="row">
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary">บันทึก</button>
+                                    <button type="submit" class="btn btn-success">บันทึก</button>
                                 </div>
                             </div>
 
                         </form>
-
-
-
-
-
-
                     </div>
                 </div>
             </div>
