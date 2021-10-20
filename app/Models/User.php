@@ -11,6 +11,14 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+
+    // set password ให้เข้ารหัส
+    public function setPasswordAttribute($password)
+    {
+
+        $this->attributes['password'] = bcrypt($password);
+    }
+ // set password ให้เข้ารหัส
     /**
      * The attributes that are mass assignable.
      *
@@ -20,7 +28,7 @@ class User extends Authenticatable
         'name',
         'username',
         'password',
-        'is_admin',
+        'agency_id'
     ];
 
     /**
