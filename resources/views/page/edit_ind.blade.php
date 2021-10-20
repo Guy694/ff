@@ -34,7 +34,7 @@
                                 <div class="col-3">
                                     <label for="" class="form-label">ผลลัพธ์</label>
                                     <input type="text" class="form-control" name="ind_num_name" placeholder="7.1"
-                                        value="{{ $datapost->ind_num_name }}" required>
+                                        value="{{ $datapost->ind_num_name }}">
                                 </div>
                                 <div class="col">
                                     <label for="" class="form-label">ด้าน</label>

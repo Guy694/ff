@@ -35,7 +35,7 @@
                                     <div class="col-3">
                                         <label for="" class="form-label">ตัวชี้วัดที่</label>
                                         <input type="text" class="form-control" name="exind_num_name" placeholder="7.1-1"
-                                            value="{{ $datapost->exind_num_name }}" required>
+                                            value="{{ $datapost->exind_num_name }}">
                                     </div>
                                     <div class="col">
                                         <label for="" class="form-label">ชื่อตัวชี้วัด</label>
@@ -52,9 +52,30 @@
                                             required>
                                             <option value="คะแนน" {{ $datapost->valuetype == 'คะแนน' ? 'selected' : '' }}>
                                                 คะแนน</option>
+
                                             <option value="ร้อยละ"
                                                 {{ $datapost->valuetype == 'ร้อยละ' ? 'selected' : '' }}>
                                                 ร้อยละ</option>
+
+                                            <option value="ค่าเฉลี่ย"
+                                                {{ $datapost->valuetype == 'ค่าเฉลี่ย' ? 'selected' : '' }}>
+                                                ค่าเฉลี่ย</option>
+
+                                            <option value="บาท" {{ $datapost->valuetype == 'บาท' ? 'selected' : '' }}>
+                                                บาท</option>
+
+                                            <option value="พื้นที่"
+                                                {{ $datapost->valuetype == 'พื้นที่' ? 'selected' : '' }}>
+                                                พื้นที่</option>
+
+                                            <option value="รายการ"
+                                                {{ $datapost->valuetype == 'รายการ' ? 'selected' : '' }}>
+                                                รายการ</option>
+
+                                            <option value="หลักสูตร"
+                                                {{ $datapost->valuetype == 'หลักสูตร' ? 'selected' : '' }}>
+                                                หลักสูตร</option>
+
                                         </select>
                                     </div>
                                 </div>

@@ -42,7 +42,7 @@ class ExpController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'exind_num_name' => 'required',
+            'exind_num_name',
             'exind_name' => 'required',
             'value_type' => 'required',
             'num2562',
@@ -92,7 +92,7 @@ class ExpController extends Controller
     public function update(Request $request,$exp_indicator)
     {
         $request->validate([
-            'exind_num_name' => 'required',
+            'exind_num_name',
             'exind_name' => 'required',
             'exind_name' => 'required',
             'value_type' => 'required',

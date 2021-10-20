@@ -33,8 +33,7 @@
                             <div class="row">
                                 <div class="col-3">
                                     <label for="" class="form-label">ผลลัพธ์</label>
-                                    <input type="text" class="form-control" name="ind_num_name" placeholder="7.1"
-                                        required>
+                                    <input type="text" class="form-control" name="ind_num_name" placeholder="7.1">
                                 </div>
                                 <div class="col">
                                     <label for="" class="form-label">ด้าน</label>

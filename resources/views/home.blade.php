@@ -32,7 +32,8 @@
                         @if ($relat != null)
                             <table class="table table-bordered" style="width: 100%">
                                 <tr align='center'>
-                                    <th rowspan="2" style="vertical-align: middle;width: 50%">ตัวชี้วัด</th>
+                                    <th rowspan="2" style="vertical-align: middle;width: 40%">ตัวชี้วัด</th>
+                                    <th rowspan="2" style="vertical-align: middle;width: 10%">หน่วย</th>
                                     <th colspan="2" style="width: 20%">ผลการดำเนินงานย้อนหลัง</th>
                                     <th rowspan="2" style="vertical-align: middle;width: 15%">ค่าเป้าหมาย 2564</th>
                                     <th rowspan="2" style="vertical-align: middle;width: 15%">การจัดการ</th>
@@ -51,10 +52,10 @@
                                                     {{ $row->ind_name }}</a>
                                             </td>
                                         @else
-                                            <td><a
-                                                    href="{{ route('exp.create', $row->ind_id) }}">{{ $row->ind_name }}</a>
+                                            <td><a href="{{ route('exp.show', $row->ind_id) }}">{{ $row->ind_name }}</a>
                                             </td>
                                         @endif
+                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -68,41 +69,38 @@
                                             </form>
                                         </td>
                                     </tr>
+
+
                                     @foreach ($subrelat as $sub)
                                         @if ($row->ind_id == $sub->parent_id)
                                             <tr>
                                                 <td>{{ $sub->exind_name }}</td>
                                                 <td align='center'>
-                                                    @if ($sub->num2562 != null)
-                                                        @if ($sub->value_type == 'คะแนน')
-                                                            {{ $sub->num2562 }} {{ $sub->value_type }}
-                                                        @else
-                                                            {{ $sub->value_type }} {{ $sub->num2562 }}
-                                                        @endif
-
-                                                    @else
-                                                    @endif
+                                                    {{ $sub->value_type }}
                                                 </td>
                                                 <td align='center'>
-                                                    @if ($sub->num2563 != null)
-                                                        @if ($sub->value_type == 'คะแนน')
-                                                            {{ $sub->num2563 }} {{ $sub->value_type }}
-                                                        @else
-                                                            {{ $sub->value_type }} {{ $sub->num2563 }}
-                                                        @endif
+                                                    @if ($sub->num2562 == null)
+                                                        {{ $sub->num2562 }}
                                                     @else
+                                                        {{ number_format($sub->num2562, 2) }}
                                                     @endif
 
                                                 </td>
                                                 <td align='center'>
-                                                    @if ($sub->target2564 != null)
-                                                        @if ($sub->value_type == 'คะแนน')
-                                                            {{ $sub->target2564 }} {{ $sub->value_type }}
-                                                        @else
-                                                            {{ $sub->value_type }} {{ $sub->target2564 }}
-                                                        @endif
+                                                    @if ($sub->num2563 == null)
+                                                        {{ $sub->num2563 }}
                                                     @else
+                                                        {{ number_format($sub->num2563, 2) }}
                                                     @endif
+
+                                                </td>
+                                                <td align='center'>
+                                                    @if ($sub->target2564 == null)
+                                                        {{ $sub->target2564 }}
+                                                    @else
+                                                        {{ number_format($sub->target2564, 2) }}
+                                                    @endif
+
                                                 </td>
                                                 <td align='center'>
                                                     <form action="{{ route('exp.destroy', $sub->exind_id) }}"

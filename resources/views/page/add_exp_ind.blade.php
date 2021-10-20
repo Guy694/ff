@@ -19,7 +19,7 @@
                 {{-- เช็คเออเร่อ --}}
                 <div class="card">
                     <div class="card-header bg-primary text-white">
-                        {{ __('ตัวชี้วัด ............................................') }}</div>
+                        {{ __('ผลลัพธ์') }}{{ $dataexp->ind_num_name }} {{ $dataexp->ind_name }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -33,8 +33,7 @@
                                 <div class="row">
                                     <div class="col-3">
                                         <label for="" class="form-label">ตัวชี้วัดที่</label>
-                                        <input type="text" class="form-control" name="exind_num_name" placeholder="7.1-1"
-                                            required>
+                                        <input type="text" class="form-control" name="exind_num_name" placeholder="7.1-1">
                                     </div>
                                     <div class="col">
                                         <label for="" class="form-label">ชื่อตัวชี้วัด</label>
@@ -52,6 +51,11 @@
                                             <option selected>กรุณาเลือก</option>
                                             <option value="คะแนน">คะแนน</option>
                                             <option value="ร้อยละ">ร้อยละ</option>
+                                            <option value="ค่าเฉลี่ย">ค่าเฉลี่ย</option>
+                                            <option value="บาท">บาท</option>
+                                            <option value="พื้นที่">พื้นที่</option>
+                                            <option value="รายการ">รายการ</option>
+                                            <option value="หลักสูตร">หลักสูตร</option>
                                         </select>
                                     </div>
                                 </div>
