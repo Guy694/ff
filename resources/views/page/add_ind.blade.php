@@ -41,6 +41,7 @@
                                     <input type="text" class="form-control" name="ind_name"
                                         placeholder="ด้านการจัดการศึกษา" required>
                                 </div>
+                                <input type="text" hidden name="agency_id" value="{{ Auth::user()->agency_id }}">
                             </div>
                             <br>
                             <div class="row">

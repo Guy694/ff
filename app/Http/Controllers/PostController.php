@@ -41,7 +41,8 @@ class PostController extends Controller
     {
         $request->validate([
             'ind_num_name' => 'required',
-            'ind_name' => 'required'
+            'ind_name' => 'required',
+            'agency_id'=> 'required',
             ]
         );
 
@@ -95,7 +96,8 @@ class PostController extends Controller
         $request->validate(
             [
                 'ind_num_name' => 'required',
-                'ind_name' => 'required'
+                'ind_name' => 'required',
+
             ]
             );
             $datapost = indicator::find($post);

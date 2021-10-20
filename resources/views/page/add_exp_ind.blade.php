@@ -67,7 +67,7 @@
                                     <label for="" class="form-label">ค่าเป้าหมาย ปี 2564</label>
                                     <input type="text" class="form-control" name="target2564" value="" placeholder="">
                                 </div>
-                                <input type="number" name="parent_id" value="{{ $dataexp->ind_id }}">
+                                <input type="number" name="parent_id" hidden value="{{ $dataexp->ind_id }}">
                             </div>
 
 

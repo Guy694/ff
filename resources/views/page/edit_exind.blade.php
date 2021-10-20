@@ -48,11 +48,13 @@
                                 <div class="col-3">
                                     <div class="mb-3">
                                         <label for="" class="form-label">หน่วย</label>
-                                        <select class="form-control" name="value_type"
-                                            aria-label="Default select example">
-                                            <option selected>กรุณาเลือก</option>
-                                            <option value="คะแนน">คะแนน</option>
-                                            <option value="ร้อยละ">ร้อยละ</option>
+                                        <select class="form-control" name="value_type" aria-label="Default select example"
+                                            required>
+                                            <option value="คะแนน" {{ $datapost->valuetype == 'คะแนน' ? 'selected' : '' }}>
+                                                คะแนน</option>
+                                            <option value="ร้อยละ"
+                                                {{ $datapost->valuetype == 'ร้อยละ' ? 'selected' : '' }}>
+                                                ร้อยละ</option>
                                         </select>
                                     </div>
                                 </div>

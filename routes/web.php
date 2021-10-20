@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+
 Route::get('/', function () {
     return view('auth/login');
 });
@@ -28,7 +29,11 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 // Route::get('admin/home',[HomeController::class,'adminHome'])->name('admin.home')->middleware('is_admin');
 
 Route::resource('page',PostController::class);
-
-
-
-Route::resource('exp',ExpController::class);
+// Route::post('exp', [ExpController::class,'store']);
+// Route::get('exp', [ExpController::class,'index']);
+// Route::get('exp/{exp}', [ExpController::class,'create']);
+// Route::delete('exp/{exp}', [ExpController::class,'destroy']);
+// Route::put('exp/{exp}', [ExpController::class,'update']);
+// Route::get('exp/{exp}', [ExpController::class,'show']);
+// Route::get('exp/{exp}', [ExpController::class,'edit']);
+ Route::resource('exp',ExpController::class);

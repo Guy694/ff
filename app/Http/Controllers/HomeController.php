@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\tsu_agency;
 use App\Models\exp_indicator;
 use App\Models\relation;
+use App\Models\User;
 class HomeController extends Controller
 {
     /**
@@ -26,9 +27,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-
+        $user = auth()->user()->agency_id;
         $relation = new relation();
-        $relat = $relation->getdata('select * from indicators;');
+
+        $relat = $relation->getdata('select * from indicators where agency_id ='.$user.';');
         $subrelat = $relation->getdata('select * from exp_indicators;');
 
         // $categories = indicator::whereNull('ind_id')->with('childs')->get();

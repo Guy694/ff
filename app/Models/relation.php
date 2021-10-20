@@ -11,4 +11,6 @@ class relation extends Model
     public function getdata($sql){
         return $data=DB::select($sql);
     }
+
+
 }

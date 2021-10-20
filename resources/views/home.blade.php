@@ -47,7 +47,7 @@
 
                                     <tr class=" font-weight-bold">
                                         @if ($row->ind_num_name != null)
-                                            <td><a href="{{ route('exp.create', $row->ind_id) }}">{{ $row->ind_num_name }}
+                                            <td><a href="{{ route('exp.show', $row->ind_id) }}">{{ $row->ind_num_name }}
                                                     {{ $row->ind_name }}</a>
                                             </td>
                                         @else
@@ -74,17 +74,18 @@
                                                 <td>{{ $sub->exind_name }}</td>
                                                 <td align='center'>
                                                     @if ($sub->num2562 != null)
-                                                        @if ($sub->value_type = 'คะแนน')
+                                                        @if ($sub->value_type == 'คะแนน')
                                                             {{ $sub->num2562 }} {{ $sub->value_type }}
                                                         @else
                                                             {{ $sub->value_type }} {{ $sub->num2562 }}
                                                         @endif
+
                                                     @else
                                                     @endif
                                                 </td>
                                                 <td align='center'>
                                                     @if ($sub->num2563 != null)
-                                                        @if ($sub->value_type = 'คะแนน')
+                                                        @if ($sub->value_type == 'คะแนน')
                                                             {{ $sub->num2563 }} {{ $sub->value_type }}
                                                         @else
                                                             {{ $sub->value_type }} {{ $sub->num2563 }}
@@ -95,7 +96,7 @@
                                                 </td>
                                                 <td align='center'>
                                                     @if ($sub->target2564 != null)
-                                                        @if ($sub->value_type = 'คะแนน')
+                                                        @if ($sub->value_type == 'คะแนน')
                                                             {{ $sub->target2564 }} {{ $sub->value_type }}
                                                         @else
                                                             {{ $sub->value_type }} {{ $sub->target2564 }}

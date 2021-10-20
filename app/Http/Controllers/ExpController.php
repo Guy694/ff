@@ -18,16 +18,19 @@ class ExpController extends Controller
         //
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function create()
     {
 
-        $dataexp = indicator::find(3);
-        return view('page.add_exp_ind',compact('dataexp'));
+        // $dataexp = indicator::find(3);
+        // return view('page.add_exp_ind',compact('dataexp'));
     }
 
     /**
@@ -61,9 +64,10 @@ class ExpController extends Controller
      * @param  \App\Models\exp_indicator  $exp_indicator
      * @return \Illuminate\Http\Response
      */
-    public function show(exp_indicator $exp_indicator)
+    public function show($exp_indicator)
     {
-        //
+        $dataexp = indicator::find($exp_indicator);
+        return view('page.add_exp_ind',compact('dataexp'));
     }
 
     /**
