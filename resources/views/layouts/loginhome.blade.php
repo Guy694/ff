@@ -32,7 +32,7 @@
                 <img src="{{ url('/logo/logo.png') }}" alt="LOGO" width="45" height="60">
 
                 <a class="navbar-brand p-md-2" href="{{ route('home') }}">
-                    {{ 'ระบบบันทึกคำรับรอง มหาวิทยาลัยทักษิณ' }}
+                    {{ 'ระบบบันทึกคำรับรองการปฏิบัติงาน มหาวิทยาลัยทักษิณ ปีการศึกษา 2564' }}
                 </a>
                 {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -63,7 +63,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                             document.getElementById('logout-form').submit();">
+                                                                                                                                 document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 

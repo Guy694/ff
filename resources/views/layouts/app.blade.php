@@ -31,7 +31,7 @@
                 <img src="{{ url('/logo/logo.png') }}" alt="LOGO" width="45" height="60">
 
                 <a class="navbar-brand p-md-2" href="{{ route('home') }}">
-                    {{ 'ระบบบันทึกคำรับรอง มหาวิทยาลัยทักษิณ' }}
+                    {{ 'ระบบบันทึกคำรับรองการปฏิบัติงาน มหาวิทยาลัยทักษิณ ปีการศึกษา 2564' }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -40,7 +40,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    @if (Auth::user()->agency_id != 1)
+                    {{-- @if (Auth::user()->agency_id != 1)
                         <ul class="navbar-nav mr-auto">
                             <li><a class="nav-link"
                                     href="{{ route('page.create') }}">{{ __('+เพิ่มตัวชี้วัด') }}</a></li>
@@ -48,7 +48,7 @@
                         </ul>
                     @else
 
-                    @endif
+                    @endif --}}
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -117,7 +117,7 @@
 
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
-                                                                                                         document.getElementById('logout-form').submit();">
+                                                                                                                 document.getElementById('logout-form').submit();">
                                             {{ __('ออกจากระบบ') }}
                                         </a>
 
@@ -128,7 +128,7 @@
                                     @else
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                    document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                            document.getElementById('logout-form').submit();">
                                             {{ __('ออกจากระบบ') }}
                                         </a>
 

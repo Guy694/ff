@@ -20,7 +20,7 @@
                 {{-- เช็คเออเร่อ --}}
 
                 <div class="card">
-                    <div class="card-header text-white bg-primary">{{ __('ผลลัพธ์') }}</div>
+                    <div class="card-header text-white bg-primary">{{ __('เพิ่มผลลัพธ์') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -31,14 +31,22 @@
                         <form action="{{ route('page.store') }}" method="post">
                             @csrf
                             <div class="row">
-                                <div class="col-3">
+                                {{-- <div class="col-3">
                                     <label for="" class="form-label">ผลลัพธ์</label>
                                     <input type="text" class="form-control" name="ind_num_name" placeholder="7.1">
-                                </div>
+                                </div> --}}
+
                                 <div class="col">
                                     <label for="" class="form-label">ด้าน</label>
-                                    <input type="text" class="form-control" name="ind_name"
-                                        placeholder="ด้านการจัดการศึกษา" required>
+                                    <select class="form-control" name="ind_name" aria-label="Default select example"
+                                        required>
+                                        <option selected value="">กรุณาเลือก</option>
+                                        @foreach ($ind_list as $item)
+                                            <option value="{{ $item->indicator_list_id }}">
+                                                {{ $item->indicator_list_name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <input type="text" hidden name="agency_id" value="{{ Auth::user()->agency_id }}">
                             </div>

@@ -38,8 +38,17 @@
                                 </div>
                                 <div class="col">
                                     <label for="" class="form-label">ด้าน</label>
-                                    <input type="text" class="form-control" name="ind_name"
-                                        placeholder="ด้านการจัดการศึกษา" value="{{ $datapost->ind_name }}" required>
+                                    <select class="form-control" name="ind_name" aria-label="Default select example"
+                                        required>
+
+                                        @foreach ($ind_list as $item)
+                                            <option value="{{ $item->indicator_list_id }}"
+                                                {{ $drop_listed->ind_name == $item->indicator_list_id ? 'selected' : '' }}>
+                                                {{ $item->indicator_list_name }}</option>
+                                        @endforeach
+
+
+                                    </select>
                                 </div>
                             </div>
                             <br>
@@ -58,11 +67,11 @@
 
 
 
+    <option {{ old('name') == $key ? 'selected' : '' }} value="{{ $value }}">
 
 
 
 
 
 
-
-@endsection
+    @endsection

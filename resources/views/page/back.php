@@ -102,3 +102,58 @@
 @endif
 @endforeach
 @endforeach
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+    <div class="col-4">
+        <label for="" class="form-label">หมายเหตุ</label>
+        <select class="form-control" name="ex_side_list" aria-label="Default select example" required>
+            <option selected value="">กรุณาเลือก</option>
+            @foreach ($ex_side_list as $side_item)
+            if()
+            <option value="{{ $side_item->ex_side_list_name }}">
+                {{ $side_item->ex_side_list_name }}
+            </option>
+            @endforeach
+        </select>
+    </div>
+</div>

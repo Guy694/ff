@@ -19,7 +19,17 @@
                 {{-- เช็คเออเร่อ --}}
                 <div class="card">
                     <div class="card-header bg-primary text-white">
-                        {{ __('ผลลัพธ์') }}{{ $dataexp->ind_num_name }} {{ $dataexp->ind_name }}</div>
+                        {{ __('ผลลัพธ์') }}@if ($dataexp->ind_name == '1')
+                            {{ '7.1 ผลลัพธ์ด้านการเรียนรู้ของผู้เรียน และด้านกระบวนการ' }}
+                        @elseif( $dataexp->ind_name == '2')
+                            {{ '7.2 ผลลัพธ์ด้านการมุ่งเน้นลูกค้า' }}
+                        @elseif( $dataexp->ind_name == '2')
+                            {{ '7.3 ผลลัพธ์ด้านการมุ่งเน้นบุคลากร' }}
+                        @elseif( $dataexp->ind_name == '2')
+                            {{ '7.4 ผลลัพธ์ด้านการนำองค์การและการกำกับดูแล' }}
+                        @endif
+                        {{ '7.5 ผลลัพธ์ด้านงบประมาณ การเงิน และตลาด' }}
+                    </div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -33,48 +43,49 @@
                                 <div class="row">
                                     <div class="col-3">
                                         <label for="" class="form-label">ตัวชี้วัดที่</label>
-                                        <input type="text" class="form-control" name="exind_num_name" placeholder="7.1-1">
+                                        <input type="text" class="form-control" name="exind_num_name" required
+                                            placeholder="">
                                     </div>
                                     <div class="col">
-                                        <label for="" class="form-label">ชื่อตัวชี้วัด</label>
-                                        <input type="text" class="form-control" name="exind_name"
-                                            placeholder="ด้านการจัดการศึกษา" required>
+                                        <label for="" class="form-label">ตัวชี้วัด</label>
+                                        <input type="text" class="form-control" name="exind_name" placeholder="" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-3">
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">หน่วย</label>
-                                        <select class="form-control" name="value_type"
-                                            aria-label="Default select example">
-                                            <option selected>กรุณาเลือก</option>
-                                            <option value="คะแนน">คะแนน</option>
-                                            <option value="ร้อยละ">ร้อยละ</option>
-                                            <option value="ค่าเฉลี่ย">ค่าเฉลี่ย</option>
-                                            <option value="บาท">บาท</option>
-                                            <option value="พื้นที่">พื้นที่</option>
-                                            <option value="รายการ">รายการ</option>
-                                            <option value="หลักสูตร">หลักสูตร</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <label for="" class="form-label">ผลการดำเนินงานย้อนหลัง ปี 2562</label>
+
+                                <div class="col-4">
+                                    <label for="" class="form-label">ผลการดำเนินงานย้อนหลัง ปี 2562</label><label for=""
+                                        class=" text-danger">&nbsp(กรณีไม่มีใส่ N/a)</label>
                                     <input type="text" class="form-control" name="num2562" value="" placeholder="">
                                 </div>
-                                <div class="col-3">
-                                    <label for="" class="form-label">ผลการดำเนินงานย้อนหลัง ปี 2563</label>
+                                <div class="col-4">
+                                    <label for="" class="form-label">ผลการดำเนินงานย้อนหลัง ปี 2563</label><label for=""
+                                        class=" text-danger">&nbsp(กรณีไม่มีใส่ N/a)</label>
                                     <input type="text" class="form-control" name="num2563" value="" placeholder="">
                                 </div>
-                                <div class="col-3">
+                                <div class="col-4">
                                     <label for="" class="form-label">ค่าเป้าหมาย ปี 2564</label>
                                     <input type="text" class="form-control" name="target2564" value="" placeholder="">
                                 </div>
                                 <input type="number" name="parent_id" hidden value="{{ $dataexp->ind_id }}">
                             </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <label for="" class="form-label">หมายเหตุ</label>
+                                    <select class="form-control" name="symbol_id" aria-label="Default select example"
+                                        required>
+                                        <option selected value="">กรุณาเลือก</option>
+                                        @foreach ($symbol as $symbol_item)
+                                            <option value="{{ $symbol_item->symbol_id }}">
+                                                {{ $symbol_item->symbol_name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
 
-
+                            <br>
                             <div class="row">
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-success">บันทึก</button>

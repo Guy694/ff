@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\tsu_agency;
 use App\Models\relation;
 
+
 use function GuzzleHttp\Promise\all;
 
 class PostController extends Controller
@@ -28,7 +29,28 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('page.add_ind');
+
+
+        // $data = new relation();
+        // $ind_list = $data->getdata('SELECT * FROM  indicator_list;');
+
+        // return view('page.add_ind',compact('ind_list'));
+
+
+    }
+
+    public function create2($agency)
+    {
+
+        $dropdow = new relation();
+        $drop_listed = $dropdow->getdata('SELECT * FROM  indicators WHERE agency_id = '.$agency.';');
+
+        $data = new relation();
+        $ind_list = $data->getdata('SELECT * FROM  indicator_list;');
+
+        return view('page.add_ind',compact('ind_list','drop_listed'));
+
+
     }
 
     /**
@@ -40,7 +62,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'ind_num_name',
+            // 'ind_num_name',
             'ind_name' => 'required',
             'agency_id'=> 'required',
             ]
@@ -95,7 +117,7 @@ class PostController extends Controller
     {
         $request->validate(
             [
-                'ind_num_name',
+                // 'ind_num_name',
                 'ind_name'=> 'required'
 
             ]
