@@ -126,6 +126,8 @@ class ExpController extends Controller
     public function destroy($exp_indicator)
     {
         $item = exp_indicator::where('exind_id',$exp_indicator);
+        $item_side = ex_side_list::where('exind_id',$exp_indicator);
+        $item_side->delete();
         $item->delete();
         return redirect()->route('home')->with('success','ลบข้อมูลสำเร็จ');
     }
@@ -213,6 +215,8 @@ public function show_is($exp,$exp2)
     public function destroy_is($exp_indicator)
     {
         $item = exp_indicator::where('exind_id',$exp_indicator);
+        $item_side = ex_side_list::where('exind_id',$exp_indicator);
+        $item_side->delete();
         $item->delete();
         return redirect()->route('home')->with('success','ลบข้อมูลสำเร็จ');
     }

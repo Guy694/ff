@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class tsu_agency extends Model
 {
+    protected  $primaryKey = 'agency_id';
     use HasFactory;
 }

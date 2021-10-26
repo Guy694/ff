@@ -41,13 +41,13 @@
                             <div class="row">
                                 <div class="col-4">
                                     <label for="" class="form-label">ผลการดำเนินงานย้อนหลัง ปี 2562</label><label for=""
-                                        class=" text-danger">&nbsp(กรณีไม่มีใส่ N/a)</label>
+                                        class=" text-danger">&nbsp(กรณีไม่มีใส่ N/A)</label>
                                     <input type="text" class="form-control" name="num2562"
                                         value="{{ $datapost->num2562 }}" placeholder="">
                                 </div>
                                 <div class="col-4">
                                     <label for="" class="form-label">ผลการดำเนินงานย้อนหลัง ปี 2563</label><label for=""
-                                        class=" text-danger">&nbsp(กรณีไม่มีใส่ N/a)</label>
+                                        class=" text-danger">&nbsp(กรณีไม่มีใส่ N/A)</label>
                                     <input type="text" class="form-control" name="num2563"
                                         value="{{ $datapost->num2563 }}" placeholder="">
                                 </div>

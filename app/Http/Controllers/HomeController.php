@@ -10,6 +10,8 @@ use App\Models\relation;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\String\UnicodeString;
+
 class HomeController extends Controller
 {
     /**
@@ -187,9 +189,15 @@ class HomeController extends Controller
         // $relat = $relation->getdata('SELECT * FROM indicators INNER JOIN indicator_list ON indicators.ind_name = indicator_list.indicator_list_id  where agency_id ='.$user.' order by indicator_list.indicator_list_id ASC;');
 
         $relat = $relation->getdata('SELECT * FROM indicators INNER JOIN indicator_list ON indicators.ind_name = indicator_list.indicator_list_id  where agency_id ='.$user.' order by indicator_list.indicator_list_id ASC;');
-        $subrelat = $relation->getdata('select * from exp_indicators ORDER BY exind_name ASC;');
+        $subrelat = $relation->getdata('SELECT *
+        FROM exp_indicators
+        INNER JOIN symbol
+        ON exp_indicators.symbol_id = symbol.symbol_id ORDER BY ABS(exp_indicators.exind_num_name) ASC;');
 
         $agency = $relation->getdata('select * from tsu_agency where agency_id ='.$user.';');
+        $sub_sub = $relation->getdata('SELECT *FROM ex_side_lists  ORDER BY ex_side_list_id ASC;');
+
+
         // return $agency;
 
 
@@ -298,6 +306,7 @@ class HomeController extends Controller
         // $table->addCell(2000, $cellRowSpan)->addText("");
         $table->addCell(3000, $cellColSpan)->addText("ผลการดำเนินงานย้อนหลัง",null,'pStyle');
         $table->addCell(2000, $cellRowSpan)->addText("ค่าเป้าหมาย 2564",null,'pStyle');
+        $table->addCell(500, $cellRowSpan)->addText("หมายเหตุ",null,'pStyle');
 
         $table->addRow(100, array('tblHeader' => true));
         // $table->addCell(null, $cellRowContinue);
@@ -305,27 +314,46 @@ class HomeController extends Controller
         $table->addCell(1500,['bgColor'=>'99ccff'])->addText("2562",null,'pStyle');
         $table->addCell(1500,['bgColor'=>'99ccff'])->addText("2563",null,'pStyle');
         $table->addCell(null, $cellRowContinue);
+        $table->addCell(null, $cellRowContinue);
 
         foreach ($relat as $value) {
             $table->addRow();
-            $table->addCell(5000,['bgColor'=>'a8d08d'])->addText($value->indicator_list_name,['bold'=>true]);
-            $table->addCell(1500,['bgColor'=>'a8d08d'])->addText();
-            $table->addCell(1500,['bgColor'=>'a8d08d'])->addText();
-            $table->addCell(2000,['bgColor'=>'a8d08d'])->addText();
+            $table->addCell(5000, ['bgColor'=>'a8d08d'])->addText($value->indicator_list_name, ['bold'=>true]);
+            $table->addCell(1500, ['bgColor'=>'a8d08d'])->addText();
+            $table->addCell(1500, ['bgColor'=>'a8d08d'])->addText();
+            $table->addCell(2000, ['bgColor'=>'a8d08d'])->addText();
+            $table->addCell(500, ['bgColor'=>'a8d08d'])->addText();
 
             foreach ($subrelat as $value1) {
                 if ($value->ind_id == $value1->parent_id) {
                     $table->addRow();
                     $table->addCell(5000)->addText($value1->exind_num_name.$value1->exind_name);
-                    $table->addCell(1500)->addText($value1->num2562,null,'pStyle');
-                    $table->addCell(1500)->addText($value1->num2563,null,'pStyle');
-                    $table->addCell(2000)->addText($value1->target2564,null,'pStyle');
+                    $table->addCell(1500)->addText($value1->num2562, null, 'pStyle');
+                    $table->addCell(1500)->addText($value1->num2563, null, 'pStyle');
+                    $table->addCell(2000)->addText($value1->target2564, null, 'pStyle');
+                    if($value1->symbol_name == "วงกลม"){
+                        $table->addCell(500)->addText("●",null, 'pStyle');
+                    }elseif($value1->symbol_name == "ข้าวหลามตัด"){
+                        $table->addCell(500)->addText("◆", null, 'pStyle');
+                    }elseif($value1->symbol_name =="ดอกจัน"){
+                        $table->addCell(500)->addText("✱", null, 'pStyle');
+                    }else{
+                         $table->addCell(500)->addText("ฉ", null, 'pStyle');
+                    }
+
+                    foreach ($sub_sub as $value2) {
+                        if ($value1->exind_id == $value2->exind_id) {
+                            $table->addRow();
+                            $table->addCell(5000)->addText($value2->ex_side_list_name);
+                            $table->addCell(1500)->addText($value2->num2562, null, 'pStyle');
+                            $table->addCell(1500)->addText($value2->num2563, null, 'pStyle');
+                            $table->addCell(2000)->addText($value2->target2564, null, 'pStyle');
+                            $table->addCell(500)->addText();
+                        }
+                    }
                 }
             }
         }
-
-
-
 
         $xmlWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
         $xmlWriter->save("php://output");
@@ -380,6 +408,8 @@ class HomeController extends Controller
         $subrelat_is_academic = $relation->getdata('select * from exp_indicators ORDER BY exind_name ASC;');
 
         $agency = $relation->getdata('select * from tsu_agency where agency_id ='.$user.';');
+
+        $sub_sub = $relation->getdata('SELECT *FROM ex_side_lists  ORDER BY ex_side_list_id ASC;');
         // return $agency;
 
 
@@ -515,6 +545,15 @@ class HomeController extends Controller
                     $table->addCell(1500)->addText($value1->num2562,null,'pStyle');
                     $table->addCell(1500)->addText($value1->num2563,null,'pStyle');
                     $table->addCell(2000)->addText($value1->target2564,null,'pStyle');
+                    foreach ($sub_sub as $value2) {
+                        if ($value1->exind_id == $value2->exind_id) {
+                            $table->addRow();
+                            $table->addCell(5000)->addText($value2->ex_side_list_name);
+                            $table->addCell(1500)->addText($value2->num2562, null, 'pStyle');
+                            $table->addCell(1500)->addText($value2->num2563, null, 'pStyle');
+                            $table->addCell(2000)->addText($value2->target2564, null, 'pStyle');
+                        }
+                    }
                 }
             }
         }

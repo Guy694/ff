@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ex_side_list;
 use App\Models\indicator;
 use Illuminate\Http\Request;
 use App\Models\tsu_agency;
 use App\Models\relation;
+use App\Models\exp_indicator;
 
 
 use function GuzzleHttp\Promise\all;
@@ -138,6 +140,11 @@ class PostController extends Controller
     {
         $item = indicator::where('ind_id',$post);
         $item->delete();
+        $item_ex = exp_indicator::where('parent_id',$post);
+        $item_ex->delete();
+        // $item_side = ex_side_list::where('exind_id',$item_ex->exind_id);
+        // $item_side->delete();
+
         return redirect()->route('home')->with('success','ลบข้อมูลสำเร็จ');
     }
 

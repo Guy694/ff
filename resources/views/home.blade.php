@@ -32,7 +32,9 @@
                             @else
                                 <div class="card-header text-white bg-primary d-flex justify-content-between">
                                     {{ 'ตารางคำรับรองตัวชี้วัด' }} <a href="{{ route('home.generatedocx') }}"
-                                        class="text-white">{{ 'ดาวน์โหลดไฟล์' }}</a></div>
+                                        class="text-white">{{ 'ดาวน์โหลดไฟล์ ' }}<img
+                                            src="{{ url('/logo/msword.png') }}" alt="LOGO" width="25" height="25"></div>
+                                </a>
                             @endif
 
                             <div class="card-body">
@@ -77,7 +79,8 @@
                                                         class="btn btn-primary ">เพิ่มตัวชี้วัด</a>
                                                     {{-- <a href="{{ route('page.edit', $row->ind_id) }}"
                                                     class="btn btn-primary ">แก้ไข</a> --}}
-                                                    <button type="submit" class="btn btn-danger">ลบ</button>
+                                                    <button type="submit" class="btn btn-danger show_confirm"
+                                                        data-toggle="tooltip">ลบ</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -130,9 +133,11 @@
                                                             @csrf
                                                             <a href="{{ route('exp.show_side', $sub->exind_id) }}"
                                                                 class="btn btn-primary ">เพิ่มตัวย่อย</a>
-                                                            <a href="{{ route('exp.edit', $sub->exind_id) }}" class="btn"
+                                                            <a href="{{ route('exp.edit', $sub->exind_id) }}"
+                                                                class="btn"
                                                                 style="background-color: orange">แก้ไข</a>
-                                                            <button type="submit" class="btn btn-danger">ลบ</button>
+                                                            <button type="submit" class="btn btn-danger show_confirm_ex"
+                                                                data-toggle="tooltip">ลบ</button>
                                                         </form>
                                                     </td>
                                                     @foreach ($sub_sub as $side)
@@ -140,7 +145,7 @@
                                                         @if ($sub->exind_id == $side->exind_id)
                                                 <tr>
 
-                                                    <td>{{ '- ' }}{{ $side->ex_side_list_name }}
+                                                    <td>{{ $side->ex_side_list_name }}
                                                     </td>
                                                     <td align='center'>
                                                         {{ $side->num2562 }}
@@ -160,7 +165,8 @@
                                                             @method('DELETE')
                                                             @csrf
                                                             <a href="{{ route('exp.edit_side', $side->ex_side_list_id) }}"
-                                                                class="btn" style="background-color: orange">แก้ไข</a>
+                                                                class="btn"
+                                                                style="background-color: orange">แก้ไข</a>
                                                             <button type="submit" class="btn btn-danger">ลบ</button>
                                                         </form>
                                                     </td>
@@ -196,7 +202,9 @@
                 @else
                     <div class="card-header text-white bg-primary d-flex justify-content-between">
                         {{ 'ตารางคำรับรองตัวชี้วัด' }} <a href="{{ route('home.generatedocx_is') }}"
-                            class=" text-white">{{ 'ดาวน์โหลดไฟล์' }}</a></div>
+                            class=" text-white">{{ 'ดาวน์โหลดไฟล์ ' }}<img src="{{ url('/logo/msword.png') }}"
+                                alt="LOGO" width="25" height="25">
+                        </a></div>
                 @endif
 
                 <div class="card-body">
@@ -261,7 +269,8 @@
                                                     class="btn btn-primary ">เพิ่มตัวย่อย</a>
                                                 <a href="{{ route('exp.edit_is', $sub_is->exind_id) }}"
                                                     style="background-color: orange" class="btn">แก้ไข</a>
-                                                <button type="submit" class="btn btn-danger">ลบ</button>
+                                                <button type="submit" class="btn btn-danger show_confirm_ex"
+                                                    data-toggle="tooltip">ลบ</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -270,7 +279,7 @@
                                         @if ($sub_is->exind_id == $sub_side->exind_id)
                                             <tr>
 
-                                                <td>{{ '- ' }}{{ $sub_side->ex_side_list_name }}
+                                                <td>{{ $sub_side->ex_side_list_name }}
                                                 </td>
                                                 <td align='center'>
                                                     {{ $sub_side->num2562 }}
@@ -290,8 +299,9 @@
                                                         @method('DELETE')
                                                         @csrf
                                                         <a href="{{ route('exp.edit_exside', $sub_side->ex_side_list_id) }}"
-                                                            class="btn" style="background-color: orange">แก้ไข</a>
-                                                        <button type="submit" class="btn btn-danger">ลบ</button>
+                                                            class="btn "
+                                                            style="background-color: orange">แก้ไข</a>
+                                                        <button type="submit" class="btn btn-danger ">ลบ</button>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -309,7 +319,7 @@
         @endif
 
     @else
-        {{-- ADMIN --}}
+        {{-- /ADMIN --}}
         @endif
 
 
@@ -318,4 +328,86 @@
     </div>
     </div>
     </div>
+
+
+
+
+    {{-- confirm delete alert------------------------------------------------------------------------------------------------------------------ --}}
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        // เตือนลบตัวย่อย
+        $('.show_confirm').click(function(event) {
+
+            var form = $(this).closest("form");
+
+            var name = $(this).data("name");
+
+            event.preventDefault();
+
+            swal({
+
+                    title: `ต้องการลบหรือไม่`,
+
+                    text: "หากทำการลบผลลัพธ์นี้ ตัวชี้วัดและตัวย่อยในผลลัพธ์นี้จะถูกลบไปด้วย",
+
+                    icon: "warning",
+
+                    buttons: true,
+
+                    dangerMode: true,
+
+                })
+
+                .then((willDelete) => {
+
+                    if (willDelete) {
+
+                        form.submit();
+
+                    }
+
+                });
+
+        });
+
+
+
+
+        // เตือนลบตัวชี้วัด
+        $('.show_confirm_ex').click(function(event) {
+
+            var form = $(this).closest("form");
+
+            var name = $(this).data("name");
+
+            event.preventDefault();
+
+            swal({
+
+                    title: `ต้องการลบหรือไม่`,
+
+                    text: "หากทำการลบตัวชี้วัดนี้ ตัวย่อยในตัวชี้วัดจะถูกลบไปด้วย",
+
+                    icon: "warning",
+
+                    buttons: true,
+
+                    dangerMode: true,
+
+                })
+
+                .then((willDelete) => {
+
+                    if (willDelete) {
+
+                        form.submit();
+
+                    }
+
+                });
+
+        });
+    </script>
 @endsection
