@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -57,10 +56,6 @@
                                 </div>
                                 <input type="number" name="exind_id" hidden value="{{ $exind->exind_id }}">
                             </div>
-
-
-
-
                             <br>
                             <div class="row">
                                 <div class="col-12">

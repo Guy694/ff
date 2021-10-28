@@ -15,7 +15,7 @@
                 <div>
                     @if (Auth::user()->user_type == 'MANAGE' || Auth::user()->user_type == 'ETC')
                         <a class="btn btn-warning"
-                            href="{{ route('page.create2', Auth::user()->agency_id) }}">{{ __('+เพิ่มตัวชี้วัด') }}</a>
+                            href="{{ route('page.create2', Auth::user()->agency_id) }}">{{ __('+เพิ่มผลลัพธ์') }}</a>
                     @else
 
                     @endif

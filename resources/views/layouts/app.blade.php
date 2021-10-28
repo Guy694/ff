@@ -76,8 +76,8 @@
                                     @elseif (Auth::user()->agency_id ==13) {{ 'วิทยาลัยการจัดการเพื่อการพัฒนา' }}
                                     @elseif (Auth::user()->agency_id ==14) {{ 'วิทยาลัยนานาชาติ' }}
                                     @elseif (Auth::user()->agency_id ==15) {{ 'บัณฑิตวิทยาลัย' }}
-                                    @elseif (Auth::user()->agency_id ==16)
-                                        {{ 'สำนักส่งเสริมการบริการวิชาการและภูมิปัญชุมชน' }}
+                                    @elseif (Auth::user()->agency_id
+                                        ==16){{ 'สำนักส่งเสริมการบริการวิชาการและภูมิปัญชุมชน' }}
                                     @elseif (Auth::user()->agency_id ==17) {{ 'สถาบันทักษิณคดีศึกษา' }}
                                     @elseif (Auth::user()->agency_id ==18)
                                         {{ 'สถาบันปฏิบัติการชุมชนเพื่อการศึกษาแบบบูรณาการ' }}
@@ -97,17 +97,14 @@
                                     @elseif (Auth::user()->agency_id ==32) {{ 'ฝ่ายแผนงาน' }}
                                     @elseif (Auth::user()->agency_id ==33) {{ 'ฝ่ายวิชาการ' }}
                                     @elseif (Auth::user()->agency_id ==34) {{ 'งานวิเทศสัมพันธ์' }}
-                                    @elseif (Auth::user()->agency_id ==35)
-                                        {{ 'สำนักบ่มเพาะวิชาการเพื่อวิสาหกิจในชุมชน' }}
-                                    @else
-                                        {{ 'ฝ่ายสื่อสารองค์กร' }}
+                                    @elseif (Auth::user()->agency_id
+                                        ==35){{ 'สำนักบ่มเพาะวิชาการเพื่อวิสาหกิจในชุมชน' }}
+                                        @else{{ 'ฝ่ายสื่อสารองค์กร' }}
                                     @endif
 
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @if (Auth::user()->agency_id == 1)
-
-
                                         <a class="dropdown-item" href="{{ route('home.userlist') }}">
                                             {{ __('จัดการผู้ใช้') }}
                                         </a>
@@ -118,7 +115,7 @@
 
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
-                                                                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                                                                                             document.getElementById('logout-form').submit();">
                                             {{ __('ออกจากระบบ') }}
                                         </a>
 
@@ -129,7 +126,7 @@
                                     @else
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                        document.getElementById('logout-form').submit();">
                                             {{ __('ออกจากระบบ') }}
                                         </a>
 
@@ -137,16 +134,9 @@
                                             class="d-none">
                                             @csrf
                                         </form>
-
                                     @endif
-
-
-
-
                                 </div>
                             </li>
-
-
                         @endguest
                     </ul>
                 </div>

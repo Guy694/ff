@@ -63,7 +63,7 @@
                                     <button type="submit" class="btn btn-success">
                                         {{ __('Login') }}
                                     </button>
-                                    <a class="btn btn-link" href="">
+                                    <a class="btn btn-link" href="{{ url('manual.docx') }}">
                                         {{ __('คู่มือการใช้งาน') }}
                                     </a>
                                 </div>
