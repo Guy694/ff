@@ -35,16 +35,12 @@ class HomeController extends Controller
         $relation = new relation();
    //   ส่วนงานบริหาร อื้นๆ
         $relat = $relation->getdata('SELECT * FROM indicators INNER JOIN indicator_list ON indicators.ind_name = indicator_list.indicator_list_id  where agency_id ='.$user.' order by indicator_list.indicator_list_id ASC;');
-        $subrelat = $relation->getdata('SELECT *
-        FROM exp_indicators
-        INNER JOIN symbol
-        ON exp_indicators.symbol_id = symbol.symbol_id ORDER BY ABS(exp_indicators.exind_num_name) ASC;');
+        $subrelat = $relation->getdata('SELECT *FROM exp_indicators INNER JOIN symbol ON exp_indicators.symbol_id = symbol.symbol_id ORDER BY ABS(exp_indicators.exind_num_name) ASC;');
         $sub_sub = $relation->getdata('SELECT *FROM ex_side_lists  ORDER BY ex_side_list_id ASC;');
 
 
-
     //   คณะ
-        $relat_is_academic = $relation->getdata('SELECT * FROM indicators where agency_id ='.$user.' ;');
+        $relat_is_academic = $relation->getdata('SELECT * FROM indicators where agency_id ='.$user.' AND ind_type != "0" ORDER BY ind_num_name ASC ');
         $subrelat_is_academic = $relation->getdata('SELECT *FROM exp_indicators ORDER BY exind_name ASC;');
         $sub_side_is_academic = $relation->getdata('SELECT *FROM ex_side_lists  ORDER BY ex_side_list_id ASC;');
 
@@ -404,7 +400,7 @@ class HomeController extends Controller
 
         // $relat = $relation->getdata('SELECT * FROM indicators INNER JOIN indicator_list ON indicators.ind_name = indicator_list.indicator_list_id  where agency_id ='.$user.' order by indicator_list.indicator_list_id ASC;');
 
-        $relat_is_academic = $relation->getdata('SELECT * FROM indicators where agency_id ='.$user.' ;');
+        $relat_is_academic = $relation->getdata('SELECT * FROM indicators where agency_id ='.$user.'  AND ind_type != "0" ORDER BY ind_num_name ASC;');
         $subrelat_is_academic = $relation->getdata('select * from exp_indicators ORDER BY exind_name ASC;');
 
         $agency = $relation->getdata('select * from tsu_agency where agency_id ='.$user.';');

@@ -69,8 +69,7 @@ class ExpController extends Controller
     public function show($exp_indicator)
     {
         $data = new relation();
-        // $ind_list = $data->getdata('SELECT * FROM  indicator_list  ;');
-
+        $ind_list = $data->getdata('SELECT * FROM  indicator_list  ;');
         $symbol = $data->getdata('SELECT * FROM  symbol ;');
         $dataexp = indicator::find($exp_indicator);
         return view('page.add_exp_ind',compact('dataexp','ind_list','symbol'));
