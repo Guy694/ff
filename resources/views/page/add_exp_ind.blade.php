@@ -75,8 +75,7 @@
                             <div class="row">
                                 <div class="col-4">
                                     <label for="" class="form-label">หมายเหตุ</label>
-                                    <select class="form-control" name="symbol_id" aria-label="Default select example"
-                                        required>
+                                    <select class="form-control" name="symbol_id" aria-label="Default select example">
                                         <option selected value="">กรุณาเลือก</option>
                                         @foreach ($symbol as $symbol_item)
                                             <option value="{{ $symbol_item->symbol_id }}">

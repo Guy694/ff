@@ -35,7 +35,7 @@ class HomeController extends Controller
         $relation = new relation();
    //   ส่วนงานบริหาร อื้นๆ
         $relat = $relation->getdata('SELECT * FROM indicators INNER JOIN indicator_list ON indicators.ind_name = indicator_list.indicator_list_id  where agency_id ='.$user.' order by indicator_list.indicator_list_id ASC;');
-        $subrelat = $relation->getdata('SELECT *FROM exp_indicators INNER JOIN symbol ON exp_indicators.symbol_id = symbol.symbol_id ORDER BY ABS(exp_indicators.exind_num_name) ASC;');
+        $subrelat = $relation->getdata('SELECT *FROM exp_indicators INNER JOIN symbol ON exp_indicators.symbol_id = symbol.symbol_id ORDER BY CONCAT( REPEAT( "0", 18 - LENGTH( LEFT( exp_indicators.exind_num_name , 10 ) ) ) , LEFT( exp_indicators.exind_num_name , 10 ) ) ;');
         $sub_sub = $relation->getdata('SELECT *FROM ex_side_lists  ORDER BY ex_side_list_id ASC;');
 
 
