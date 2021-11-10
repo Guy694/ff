@@ -213,6 +213,7 @@ class HomeController extends Controller
         $cellColSpan = array('gridSpan' => 2,'bgColor'=>'99ccff','valign'=>'center');
         $fontStyle = array('bold' => true, 'align' => 'center');
         $phpWord->addParagraphStyle('pStyle', array('bold'=>true,'align'=>'center'));
+        $phpWord->addParagraphStyle('fStyle', array('align'=>'left'));
 
         $table = array('borderColor'=>'black', 'borderSize'=> 1);
         $phpWord->addTableStyle('table', $table);
@@ -323,7 +324,7 @@ class HomeController extends Controller
             foreach ($subrelat as $value1) {
                 if ($value->ind_id == $value1->parent_id) {
                     $table->addRow();
-                    $table->addCell(5000)->addText($value1->exind_num_name.$value1->exind_name);
+                    $table->addCell(5000)->addText($value1->exind_num_name.$value1->exind_name,null, 'fStyle');
                     $table->addCell(1500)->addText($value1->num2562, null, 'pStyle');
                     $table->addCell(1500)->addText($value1->num2563, null, 'pStyle');
                     $table->addCell(2000)->addText($value1->target2564, null, 'pStyle');
