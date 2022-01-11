@@ -32,7 +32,7 @@
                 <img src="{{ url('/logo/logo.png') }}" alt="LOGO" width="45" height="60">
 
                 <a class="navbar-brand p-md-2" href="{{ route('home') }}">
-                    {{ 'ระบบบันทึกคำรับรองการปฏิบัติงาน มหาวิทยาลัยทักษิณ ปีการศึกษา 2564' }}
+                    {{ 'ระบบบันทึกคำรับรองการปฏิบัติงาน มหาวิทยาลัยทักษิณ' }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -62,43 +62,41 @@
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     @if (Auth::user()->agency_id == 1)
                                         {{ 'Administrator' }}
-                                    @elseif (Auth::user()->agency_id ==2) {{ 'คณะเทคโนโลยีและการพัฒนาชุมชน' }}
-                                    @elseif (Auth::user()->agency_id ==3) {{ 'คณะนิติศาสตร์' }}
-                                    @elseif (Auth::user()->agency_id ==4) {{ 'คณะพยาบาลศาสตร์' }}
-                                    @elseif (Auth::user()->agency_id ==5) {{ 'คณะมนุษยศาสตร์และสังคมศาสตร์' }}
-                                    @elseif (Auth::user()->agency_id ==6) {{ 'คณะวิทยาการสุขภาพและการกีฬา' }}
-                                    @elseif (Auth::user()->agency_id ==7) {{ 'คณะวิทยาศาสตร์' }}
-                                    @elseif (Auth::user()->agency_id ==8) {{ 'คณะวิศวกรรมศาสตร์' }}
-                                    @elseif (Auth::user()->agency_id ==9) {{ 'คณะศิลปกรรมศาสตร์' }}
-                                    @elseif (Auth::user()->agency_id ==10) {{ 'คณะศึกษาศาสตร์' }}
-                                    @elseif (Auth::user()->agency_id ==11) {{ 'คณะเศรษฐศาสตร์และบริหารธุรกิจ' }}
-                                    @elseif (Auth::user()->agency_id ==12) {{ 'คณะอุตสาหกรรมเกษตรและชีวภาพ' }}
-                                    @elseif (Auth::user()->agency_id ==13) {{ 'วิทยาลัยการจัดการเพื่อการพัฒนา' }}
-                                    @elseif (Auth::user()->agency_id ==14) {{ 'วิทยาลัยนานาชาติ' }}
-                                    @elseif (Auth::user()->agency_id ==15) {{ 'บัณฑิตวิทยาลัย' }}
-                                    @elseif (Auth::user()->agency_id
-                                        ==16){{ 'สำนักส่งเสริมการบริการวิชาการและภูมิปัญชุมชน' }}
-                                    @elseif (Auth::user()->agency_id ==17) {{ 'สถาบันทักษิณคดีศึกษา' }}
-                                    @elseif (Auth::user()->agency_id ==18)
+                                    @elseif (Auth::user()->agency_id == 2) {{ 'คณะเทคโนโลยีและการพัฒนาชุมชน' }}
+                                    @elseif (Auth::user()->agency_id == 3) {{ 'คณะนิติศาสตร์' }}
+                                    @elseif (Auth::user()->agency_id == 4) {{ 'คณะพยาบาลศาสตร์' }}
+                                    @elseif (Auth::user()->agency_id == 5) {{ 'คณะมนุษยศาสตร์และสังคมศาสตร์' }}
+                                    @elseif (Auth::user()->agency_id == 6) {{ 'คณะวิทยาการสุขภาพและการกีฬา' }}
+                                    @elseif (Auth::user()->agency_id == 7) {{ 'คณะวิทยาศาสตร์' }}
+                                    @elseif (Auth::user()->agency_id == 8) {{ 'คณะวิศวกรรมศาสตร์' }}
+                                    @elseif (Auth::user()->agency_id == 9) {{ 'คณะศิลปกรรมศาสตร์' }}
+                                    @elseif (Auth::user()->agency_id == 10) {{ 'คณะศึกษาศาสตร์' }}
+                                    @elseif (Auth::user()->agency_id == 11) {{ 'คณะเศรษฐศาสตร์และบริหารธุรกิจ' }}
+                                    @elseif (Auth::user()->agency_id == 12) {{ 'คณะอุตสาหกรรมเกษตรและชีวภาพ' }}
+                                    @elseif (Auth::user()->agency_id == 13) {{ 'วิทยาลัยการจัดการเพื่อการพัฒนา' }}
+                                    @elseif (Auth::user()->agency_id == 14) {{ 'วิทยาลัยนานาชาติ' }}
+                                    @elseif (Auth::user()->agency_id == 15) {{ 'บัณฑิตวิทยาลัย' }}
+                                    @elseif(Auth::user()->agency_id == 16){{ 'สำนักส่งเสริมการบริการวิชาการและภูมิปัญชุมชน' }}
+                                    @elseif (Auth::user()->agency_id == 17) {{ 'สถาบันทักษิณคดีศึกษา' }}
+                                    @elseif (Auth::user()->agency_id == 18)
                                         {{ 'สถาบันปฏิบัติการชุมชนเพื่อการศึกษาแบบบูรณาการ' }}
-                                    @elseif (Auth::user()->agency_id ==19) {{ 'สถาบันวิจัยและพัฒนา' }}
-                                    @elseif (Auth::user()->agency_id ==20) {{ 'สำนักคอมพิวเตอร์' }}
-                                    @elseif (Auth::user()->agency_id ==21) {{ 'สำนักหอสมุด' }}
-                                    @elseif (Auth::user()->agency_id ==22) {{ 'ฝ่ายการคลังและทรัพย์สิน' }}
-                                    @elseif (Auth::user()->agency_id ==23) {{ 'ฝ่ายกิจการนิสิตวิทยาเขตพัทลุง' }}
-                                    @elseif (Auth::user()->agency_id ==24) {{ 'ฝ่ายกิจการนิสิตวิทยาเขตสงขลา' }}
-                                    @elseif (Auth::user()->agency_id ==25) {{ 'ฝ่ายตรวจสอบภายใน' }}
-                                    @elseif (Auth::user()->agency_id ==26) {{ 'ฝ่ายนิติการ' }}
-                                    @elseif (Auth::user()->agency_id ==27) {{ 'ฝ่ายบริหารกลางและทรัพยากรบุคคล' }}
-                                    @elseif (Auth::user()->agency_id ==28) {{ 'ฝ่ายบริหารงานสภามหาวิทยาลัย' }}
-                                    @elseif (Auth::user()->agency_id ==29) {{ 'ฝ่ายบริหารวิทยาเขตพัทลุง' }}
-                                    @elseif (Auth::user()->agency_id ==30) {{ 'ฝ่ายบริหารวิทยาเขตสงขลา' }}
-                                    @elseif (Auth::user()->agency_id ==31) {{ 'ฝ่ายประกันคุณภาพการศึกษา' }}
-                                    @elseif (Auth::user()->agency_id ==32) {{ 'ฝ่ายแผนงาน' }}
-                                    @elseif (Auth::user()->agency_id ==33) {{ 'ฝ่ายวิชาการ' }}
-                                    @elseif (Auth::user()->agency_id ==34) {{ 'งานวิเทศสัมพันธ์' }}
-                                    @elseif (Auth::user()->agency_id
-                                        ==35){{ 'สำนักบ่มเพาะวิชาการเพื่อวิสาหกิจในชุมชน' }}
+                                    @elseif (Auth::user()->agency_id == 19) {{ 'สถาบันวิจัยและพัฒนา' }}
+                                    @elseif (Auth::user()->agency_id == 20) {{ 'สำนักคอมพิวเตอร์' }}
+                                    @elseif (Auth::user()->agency_id == 21) {{ 'สำนักหอสมุด' }}
+                                    @elseif (Auth::user()->agency_id == 22) {{ 'ฝ่ายการคลังและทรัพย์สิน' }}
+                                    @elseif (Auth::user()->agency_id == 23) {{ 'ฝ่ายกิจการนิสิตวิทยาเขตพัทลุง' }}
+                                    @elseif (Auth::user()->agency_id == 24) {{ 'ฝ่ายกิจการนิสิตวิทยาเขตสงขลา' }}
+                                    @elseif (Auth::user()->agency_id == 25) {{ 'ฝ่ายตรวจสอบภายใน' }}
+                                    @elseif (Auth::user()->agency_id == 26) {{ 'ฝ่ายนิติการ' }}
+                                    @elseif (Auth::user()->agency_id == 27) {{ 'ฝ่ายบริหารกลางและทรัพยากรบุคคล' }}
+                                    @elseif (Auth::user()->agency_id == 28) {{ 'ฝ่ายบริหารงานสภามหาวิทยาลัย' }}
+                                    @elseif (Auth::user()->agency_id == 29) {{ 'ฝ่ายบริหารวิทยาเขตพัทลุง' }}
+                                    @elseif (Auth::user()->agency_id == 30) {{ 'ฝ่ายบริหารวิทยาเขตสงขลา' }}
+                                    @elseif (Auth::user()->agency_id == 31) {{ 'ฝ่ายประกันคุณภาพการศึกษา' }}
+                                    @elseif (Auth::user()->agency_id == 32) {{ 'ฝ่ายแผนงาน' }}
+                                    @elseif (Auth::user()->agency_id == 33) {{ 'ฝ่ายวิชาการ' }}
+                                    @elseif (Auth::user()->agency_id == 34) {{ 'งานวิเทศสัมพันธ์' }}
+                                    @elseif(Auth::user()->agency_id == 35){{ 'สำนักบ่มเพาะวิชาการเพื่อวิสาหกิจในชุมชน' }}
                                         @else{{ 'ฝ่ายสื่อสารองค์กร' }}
                                     @endif
 
@@ -115,7 +113,7 @@
 
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
-                                                                                                                                                                             document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
                                             {{ __('ออกจากระบบ') }}
                                         </a>
 
@@ -126,7 +124,7 @@
                                     @else
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                        document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                document.getElementById('logout-form').submit();">
                                             {{ __('ออกจากระบบ') }}
                                         </a>
 
