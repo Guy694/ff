@@ -64,7 +64,7 @@ class HomeController extends Controller
     public function userlist(){
         $userdatas = new relation();
 
-        $userdata = $userdatas->getdata('select * from Users ;');
+        $userdata = $userdatas->getdata('select * from Users INNER JOIN tsu_agency ON Users.agency_id = tsu_agency.agency_id ORDER BY users.agency_id asc;');
 
         return view('adminpage.userlist',compact('userdata'));
     }

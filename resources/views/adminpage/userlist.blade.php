@@ -47,7 +47,7 @@
                                     <tr align='center'>
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $row->username }}</td>
-                                        <td>{{ $row->username }}</td>
+                                        <td>{{ $row->agency_name }}</td>
                                         <td>
                                             <form action="{{ route('home.destroy', $row->id) }}" method="POST">
                                                 @method('DELETE')
